@@ -5,12 +5,8 @@ export const ProductContext = createContext();
 export const ProductProvider = ({ children }) => {
 	const { data: products, loading, error } = useFetchData("/products");
 
-	if (loading) return <p>Loading...</p>;
-	if (error) return <p>Error!</p>;
-
-
 	return (
-		<ProductContext.Provider value={products}>
+		<ProductContext.Provider value={{ products, loading, error }}>
 			{children}
 		</ProductContext.Provider>
 	);

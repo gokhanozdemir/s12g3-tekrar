@@ -13,6 +13,7 @@ export const useFetchData = (url) => {
 	const [error, setError] = useState(null);
 
 	useEffect(() => {
+		if (data.length > 0) return;
 		instance.get(url)
 			.then((response) => {
 				setData(response.data);

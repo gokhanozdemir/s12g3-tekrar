@@ -3,12 +3,15 @@ import Product from './components/Product'
 import './App.css'
 import { useProducts } from './contexts/ProductContext'
 function App() {
-  const products = useProducts()
+  const { products, loading, error } = useProducts()
   const [count, setCount] = useState(0)
+
+
   return (
     <>
       <h1>1123 S12G3 Tekrar</h1>
-
+      {loading && <p>Loading...</p>}
+      {error && <p>Error: {error}</p>}
       <ul>
         {products.map((product) => (
           <Product key={product.id} product={product} />
