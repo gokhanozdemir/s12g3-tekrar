@@ -5,7 +5,6 @@ import { useProducts } from './contexts/ProductContext'
 function App() {
   const products = useProducts()
   const [count, setCount] = useState(0)
-
   return (
     <>
       <h1>1123 S12G3 Tekrar</h1>
