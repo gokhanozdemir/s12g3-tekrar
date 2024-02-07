@@ -7,8 +7,15 @@ function App() {
   const [products, setProducts] = useState([])
 
   const [count, setCount] = useState(0)
+
+  const instance = axios.create({
+    baseURL: 'https://fakestoreapi.com/products',
+    timeout: 1000,
+    headers: { 'Secret-Custom-Header': 'token' }
+  });
+
   useEffect(() => {
-    axios.get('https://fakestoreapi.com/products')
+    instance
       .then(function (response) {
         // handle successsetProducts(json)
         setProducts(response.data)
