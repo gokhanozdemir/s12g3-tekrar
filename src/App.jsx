@@ -5,7 +5,6 @@ import './App.css'
 
 function App() {
   const [products, setProducts] = useState([])
-
   const [count, setCount] = useState(0)
 
   const instance = axios.create({
@@ -15,7 +14,7 @@ function App() {
   });
 
   useEffect(() => {
-    instance
+    instance.get('/')
       .then(function (response) {
         // handle successsetProducts(json)
         setProducts(response.data)
