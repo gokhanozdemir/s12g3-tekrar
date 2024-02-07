@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import Product from './components/Product'
+import axios from 'axios'
 import './App.css'
 
 function App() {
@@ -7,9 +8,18 @@ function App() {
 
   const [count, setCount] = useState(0)
   useEffect(() => {
-    fetch('https://fakestoreapi.com/products')
-      .then((res) => res.json())
-      .then((json) => setProducts(json))
+    axios.get('https://fakestoreapi.com/products')
+      .then(function (response) {
+        // handle successsetProducts(json)
+        setProducts(response.data)
+        console.log(response);
+
+      })
+      .catch(function (error) {
+        // handle error
+        console.log(error);
+      })
+
   }, [])
   return (
     <>
